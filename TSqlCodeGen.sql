@@ -28,7 +28,7 @@ $table: {loop}$field{sap},{/sap} {/loop}
 * $type     : .NET Data Type
 * $sp_type  : SQL Data Type
 * $default  : .NET Default Value
-* $length   : Column 8000 Length
+* $length   : Column Max Length
 *
 * {loop}    : Start Loop Tag
 * {/loop}   : End Loop Tag
