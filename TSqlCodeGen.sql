@@ -5,19 +5,8 @@ DECLARE @Template VARCHAR(8000)
 SET @TableName = 'Orders'
 SET @PrintTableName = 'Order'
 SET @Template = '
-** Create a basic C# entity class /v1.0
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace NorthWind
-{
-    public class $table
-    {
-        {loop}public $type $field { get; set; }
-		{/loop}
-    }
-}
+** Generate simple list of table columns /v1.0
+$table: {loop}$field{sap},{/sap} {/loop}
 '
 
 /*********************************************************************\

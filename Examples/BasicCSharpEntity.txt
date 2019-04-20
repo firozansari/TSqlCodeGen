@@ -1,0 +1,12 @@
+** Create a basic C# entity class /v1.0
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace NorthWind
+{
+    public class $table
+    {{loop}
+		public $type $field { get; set; }{/loop}
+	}
+}
