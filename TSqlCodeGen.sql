@@ -6,7 +6,7 @@ SET @TableName = 'Orders'
 SET @PrintTableName = 'Order'
 SET @Template = '
 ** Generate simple list of table columns /v1.0
-$table: {loop}$field{sap},{/sap} {/loop}
+$table: {loop}$field{sap}, {/sap}{/loop}
 '
 
 /*********************************************************************\
