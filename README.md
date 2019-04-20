@@ -200,10 +200,9 @@ using System.Text;
 namespace NorthWind
 {
     public class $table
-    {
-        {loop}public $type $field { get; set; }
-		{/loop}
-    }
+    {{loop}
+		public $type $field { get; set; }{/loop}}
+	}
 }
 ```
 
@@ -218,7 +217,7 @@ namespace NorthWind
 {
     public class Order
     {
-        public Int32 OrderID { get; set; }
+		public Int32 OrderID { get; set; }
 		public String CustomerID { get; set; }
 		public Int32 EmployeeID { get; set; }
 		public DateTime OrderDate { get; set; }
@@ -230,11 +229,9 @@ namespace NorthWind
 		public String ShipAddress { get; set; }
 		public String ShipCity { get; set; }
 		public String ShipRegion { get; set; }
-		public String ShipPostalCode { get; set; }
-		
-    }
+		public String ShipPostalCode { get; set; }}
+	}
 }
-
 ```
 
 ![CSharpEntity](./Images/CSharpEntity.PNG)
