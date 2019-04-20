@@ -2,11 +2,22 @@ DECLARE @TableName VARCHAR(255)
 DECLARE @PrintTableName VARCHAR(255)
 DECLARE @Template VARCHAR(8000)
 
-SET @TableName = 'table_name'
-SET @PrintTableName = ''
+SET @TableName = 'Orders'
+SET @PrintTableName = 'Order'
 SET @Template = '
-** Generate simple list of table columns /v1.0
-$table: {loop}$field{sap},{/sap} {/loop}
+** Create a basic C# entity class /v1.0
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace NorthWind
+{
+    public class $table
+    {
+        {loop}public $type $field { get; set; }
+		{/loop}
+    }
+}
 '
 
 /*********************************************************************\
@@ -28,7 +39,7 @@ $table: {loop}$field{sap},{/sap} {/loop}
 * $type     : .NET Data Type
 * $sp_type  : SQL Data Type
 * $default  : .NET Default Value
-* $length   : Column Max Length
+* $length   : Column 8000 Length
 *
 * {loop}    : Start Loop Tag
 * {/loop}   : End Loop Tag
