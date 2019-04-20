@@ -33,8 +33,8 @@ $table: {loop}$field{sap},{/sap} {/loop}
 * {loop}    : Start Loop Tag
 * {/loop}   : End Loop Tag
 *
-* {sap}		: Separator Start Tag
-* {/sap}	: Separator End Tag
+* {sap}		  : Separator Start Tag
+* {/sap}	  : Separator End Tag
 \*********************************************************************/
 
 SET NOCOUNT ON
@@ -80,12 +80,12 @@ SET @EndTag = '{/loop}'
 SET @StartSap = '{sap}'
 SET @EndSap = '{/sap}'
 
--- find first start-loop tag in template
+-- First find start-loop tag in template
 SET @StartPos = CharIndex(@StartTag, @Template, 0)
 SET @CurrentPos = 1
 WHILE @CurrentPos > 0 AND @StartPos > 0
 BEGIN
-	-- goto the end of start-loop tag string
+	-- Goto the end of start-loop tag string
 	SET @StartPos = @StartPos+Len(@StartTag)
 	SET @EndPos = CharIndex(@EndTag, @Template, @StartPos)
 	SET @Snippet = SubString(@Template, @StartPos, @EndPos-@StartPos)
@@ -101,7 +101,7 @@ BEGIN
 		SET @RenderedSnippet = REPLACE(@RenderedSnippet, '$field', @ColumnName)
 		SET @RenderedSnippet = REPLACE(@RenderedSnippet, '$length', @MaxLength)
 
-		-- set .net data type for respective data type of column
+		-- Set .NET data type for respective data type of column
 		SELECT @RType = CASE @DataType
 			WHEN 'bit' THEN 'Boolean'
 			WHEN 'tinyint' THEN 'Int16'
@@ -133,7 +133,7 @@ BEGIN
 
 		SET @RenderedSnippet = REPLACE(@RenderedSnippet, '$type', @RType)
 
-		-- set .net default value for respective data type of column
+		-- Set .NET default value for respective data type of column
 		SELECT @RDefault = CASE @DataType
 			WHEN 'bigint' THEN '0'
 			WHEN 'int' THEN '0'
@@ -171,29 +171,29 @@ BEGIN
 	CLOSE CurColumnList
 	--print '>' + @TempSnippet
 
-	-- put back rendered snippet into template
+	-- Put back rendered snippet into the template
 	SET @Template = REPLACE(@Template, @StartTag+@Snippet+@EndTag, @TempSnippet)
 
-	-- get next position for start loop tag in template
+	-- Get the next position for start loop tag in the template
 	Set @StartPos = CharIndex(@StartTag, @Template, @EndPos+1)
 	SET @CurrentPos = @StartPos
 END
 
--- if printable table name is not specified than use table name instead
+-- If printable table name is not specified than use table name instead
 IF (@PrintTableName = '')
 	SET @PrintTableName = @TableName
 
--- replace $table tag to printable table name
+-- Replace $table tag with the printable table name
 SET @Template = REPLACE(@Template, '$table', @PrintTableName)
 
---ignore first line of template, which can be used as template description, author, template version, additional comment etc.
---simply remove this line if you dont want comment segment in template
+-- Ignore first line of template, which can be used as the template description, author, template version, additional comment etc.
+-- Simply remove following line if you dont want comment segment in the template
 SET @CurrentPos = CharIndex(CHAR(13)+CHAR(10), @Template, 0)
 SET @CurrentPos = CharIndex(CHAR(13)+CHAR(10), @Template, @CurrentPos+2) + 2
 SET @Template = SubString(@Template, @CurrentPos, Len(@Template))
 --/
 
---print rendered code in result pane
+-- Print generated code in the result pane of SQL Server Management Studio
 PRINT @Template
 
 DEALLOCATE CurColumnList
