@@ -201,14 +201,14 @@ namespace NorthWind
 {
     public class $table
     {{loop}
-		public $type $field { get; set; }{/loop}}
+		public $type $field { get; set; }{/loop}
 	}
 }
 ```
 
 Generated Code:
 
-```
+``` csharp
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -229,7 +229,7 @@ namespace NorthWind
 		public String ShipAddress { get; set; }
 		public String ShipCity { get; set; }
 		public String ShipRegion { get; set; }
-		public String ShipPostalCode { get; set; }}
+		public String ShipPostalCode { get; set; }
 	}
 }
 ```
