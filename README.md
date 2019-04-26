@@ -156,6 +156,8 @@ BEGIN
 END
 ```
 
+![Stored Procedure](./Images/StoredProcedure.PNG)
+
 **5. Create a INSERT statement**
 
 ``` sql
