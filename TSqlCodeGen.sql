@@ -12,7 +12,7 @@ $table: {loop}$field{sap}, {/sap}{/loop}
 /*********************************************************************\
 * TSqlCodeGen {Version: 2.0}
 *
-* (C) 2007-2019 Firoz Ansari. http://www.firozansari.com
+* (C) 2007-2019 Firoz Ansari. https://firozansari.com
 *
 * Permission to use, copy, modify, and distribute this software for any
 * purpose with or without fee is hereby granted, provided that the above

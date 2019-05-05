@@ -241,7 +241,7 @@ namespace NorthWind
 ## License
 The MIT License
 
-Copyright (c) 2007-2019 Firoz Ansari. http://firozansari.com
+Copyright (c) 2007-2019 Firoz Ansari. https://firozansari.com
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
